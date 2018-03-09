@@ -1,0 +1,19 @@
+#version 330 core
+
+layout(location = 0)in vec4 position;
+layout(location = 1)in vec4 in_color;
+
+uniform mat4 m_Projection;
+uniform mat4 m_Transform;
+
+out DATA{
+	vec4 m_Position;
+	vec4 m_Color;
+}vs_out;
+
+void main(){
+	vec4 new_position = m_Projection * m_Transform * position;
+	gl_Position = new_position;
+	vs_out.m_Color = in_color;
+	vs_out.m_Position = new_position;
+}

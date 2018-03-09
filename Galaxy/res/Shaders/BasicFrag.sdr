@@ -1,0 +1,18 @@
+#version 330 core
+
+layout(location = 0)out vec4 color;
+
+vec4 light_Pos = vec4(3.0f, 0.0f, 4.0f, 0.0f);
+
+in DATA
+{
+	vec4 m_Position;
+	vec4 m_Color;
+
+}vs_out;
+
+void main(){
+	
+		
+	color = vs_out.m_Color / sqrt(pow(light_Pos.x - vs_out.m_Position.x, 2) + pow(light_Pos.y - vs_out.m_Position.y, 2) + pow(light_Pos.z - vs_out.m_Position.z, 2));
+}
